@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>rtr_control</name>
+  <version>0.1.0</version>
+  <description>The rtr_control package</description>
+
+  <maintainer email="groadpg@gmail.com">Ryodo Tanaka</maintainer>
+
+  <license>BSD</license>
+
+  <url type="repository">http://gitlab.com/rogiken-tnk-ros/rtr_control</url>
+  <author email="groadpg@gmail.com">Ryodo Tanaka</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <exec_depend>rtr_double_arm_v7_control</exec_depend>
+  
+  <export>
+    <metapackage/>
+  </export>
+
+</package>
