@@ -1,0 +1,58 @@
+RTRDoubleArmV7:
+  tohoku_arm_controller:
+    type: "position_controllers/JointTrajectoryController"
+    joints:
+      - MFRAME
+      - BLOCK
+      - BOOM
+      - ARM
+      - TOHKU_PITCH
+      - TOHKU_ROLL
+  mani_arm_controller:
+    type: "position_controllers/JointTrajectoryController"
+    joints:
+      - UFRAME
+      - MNP_SWING
+      - MANIBOOM
+      - MANIARM
+      - MANIELBOW
+      - YAWJOINT
+      - HANDBASE
+  tohoku_gripper_controller:
+    type: "effort_controllers/JointPositionController"
+    joints:
+      - TOHKU_TIP_01
+      - TOHKU_TIP_02
+  mani_gripper_controller:
+    type: "effort_controllers/JointPositionController"
+    joints:
+      - PUSHROD
+  base_controller:
+    type        : "diff_drive_controller/DiffDriveController"
+    left_wheel  : 'TRACK_R'
+    right_wheel : 'TRACK_L'
+    publish_rate: 50.0
+    pose_covariance_diagonal : [0.001, 0.001, 1000000.0, 1000000.0, 1000000.0, 1000.0]
+    twist_covariance_diagonal: [0.001, 0.001, 1000000.0, 1000000.0, 1000000.0, 1000.0]
+    wheel_separation : 1.2
+    wheel_radius : 0.4
+    wheel_separation_multiplier: 1.0
+    wheel_radius_multiplier    : 1.0
+    cmd_vel_timeout: 1.0
+    base_frame_id: base_footprint
+    linear:
+      x:
+        has_velocity_limits    : true
+        max_velocity           : 4.0
+        min_velocity           : -4.0 # m/s
+        has_acceleration_limits: true
+        max_acceleration       : 1.0  # m/s^2
+        min_acceleration       : -1.0 # m/s^2
+    angular:
+      z:
+        has_velocity_limits    : true
+        max_velocity           : 6.28  # rad/s
+        min_velocity           : -6.28
+        has_acceleration_limits: true
+        max_acceleration       : 1.57  # rad/s^2
+        min_acceleration       : -1.57
