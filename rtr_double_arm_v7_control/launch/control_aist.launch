@@ -4,11 +4,10 @@
 
   <!-- robot description -->
   <param name="/RTRDoubleArmV7/robot_description" command="$(find xacro)/xacro --inorder '$(arg model)'"/>
+   
   <!-- state publisher -->
-  <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher">
-    <remap from="joint_states" to="/RTRDoubleArmV7/joint_states"/>
-  </node>
-
+  <node ns="RTRDoubleArmV7" name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="true"/>
+  
   <!-- load the controllers -->
   <rosparam file="$(find rtr_double_arm_v7_control)/config/rtr_double_arm_v7s_control.yaml" command="load"/>
   <node name="rtr_double_arm_v7_controller_spawner" pkg="controller_manager"
