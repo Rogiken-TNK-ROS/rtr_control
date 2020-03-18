@@ -1,0 +1,126 @@
+RTRDoubleArmV7:
+  tohoku_arm_controller:
+    type: "effort_controllers/JointTrajectoryController"
+    joints:
+      - MFRAME
+      - BLOCK
+      - BOOM
+      - ARM
+      - TOHKU_PITCH
+      - TOHKU_ROLL
+    gains:
+      MFRAME:
+        p: 200000
+        i: 20000
+        d: 0
+      BLOCK:
+        p: 150000
+        i: 15000
+        d: 0
+      BOOM:
+        p: 150000
+        i: 10000
+        d: 0
+      ARM:
+        p: 100000
+        i: 5000
+        d: 0
+      TOHKU_PITCH:
+        p: 30000
+        i: 500
+        d: 0
+      TOHKU_ROLL:
+        p: 20000
+        i: 500
+        d: 0       
+  mani_arm_controller:
+    type: "effort_controllers/JointTrajectoryController"
+    joints:
+      - UFRAME
+      - MNP_SWING
+      - MANIBOOM
+      - MANIARM
+      - MANIELBOW
+      - YAWJOINT
+      - HANDBASE
+    gains:
+      UFRAME:
+        p: 150000
+        i: 15000
+        d: 0
+      MNP_SWING:
+        p: 50000
+        i: 1000
+        d: 0
+      MANIBOOM:
+        p: 100000
+        i: 3000
+        d: 0
+      MANIARM:
+        p: 80000
+        i: 2000
+        d: 0
+      MANIELBOW:
+        p: 30000
+        i: 500
+        d: 0
+      YAWJOINT:
+        p: 20000
+        i: 500
+        d: 0
+      HANDBASE:
+        p: 500
+        i: 20
+        d: 0
+  tohoku_gripper_controller:
+    type: "effort_controllers/JointTrajectoryController"
+    joints:
+      - TOHKU_TIP_01
+      - TOHKU_TIP_02
+    gains:
+      TOHKU_TIP_01:
+        p: 50
+        i: 5
+        d: 0
+      TOHKU_TIP_02:
+        p: 50
+        i: 5
+        d: 0
+  mani_gripper_controller:
+    type: "effort_controllers/JointTrajectoryController"
+    joints:
+      - PUSHROD
+    gains:
+      PUSHROD:
+        p: 5000
+        i: 0
+        d: 500
+  base_controller:
+    type        : "diff_drive_controller/DiffDriveController"
+    left_wheel  : 'WHEEL_L0'
+    right_wheel : 'WHEEL_R0'
+    publish_rate: 50.0
+    pose_covariance_diagonal : [0.001, 0.001, 1000000.0, 1000000.0, 1000000.0, 1000.0]
+    twist_covariance_diagonal: [0.001, 0.001, 1000000.0, 1000000.0, 1000000.0, 1000.0]
+    wheel_separation : 1.2
+    wheel_radius : 0.4
+    wheel_separation_multiplier: 1.0
+    wheel_radius_multiplier    : 1.0
+    cmd_vel_timeout: 1.0
+    enable_odom_tf: false
+    linear:
+      x:
+        has_velocity_limits    : true
+        max_velocity           : 4.0
+        min_velocity           : -4.0 # m/s
+        has_acceleration_limits: true
+        max_acceleration       : 1.0  # m/s^2
+        min_acceleration       : -1.0 # m/s^2
+    angular:
+      z:
+        has_velocity_limits    : true
+        max_velocity           : 6.28  # rad/s
+        min_velocity           : -6.28
+        has_acceleration_limits: true
+        max_acceleration       : 1.57  # rad/s^2
+        min_acceleration       : -1.57
