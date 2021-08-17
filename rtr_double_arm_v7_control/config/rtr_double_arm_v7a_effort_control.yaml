@@ -1,0 +1,97 @@
+RTRDoubleArmV7:
+  tohoku_arm_controller:
+    type: "effort_controllers/JointTrajectoryController"
+    joints:
+      - MFRAME
+      - BLOCK
+      - BOOM
+      - ARM
+      - TOHKU_PITCH
+      - TOHKU_ROLL
+    gains:
+      MFRAME:
+        p: 200000
+        i: 0
+        d: 15000
+      BLOCK:
+        p: 15000
+        i: 0
+        d: 1500
+      BOOM:
+        p: 150000
+        i: 0
+        d: 10000
+      ARM:
+        p: 25000
+        i: 0
+        d: 1250
+      TOHKU_PITCH:
+        p: 2850
+        i: 0
+        d: 40
+      TOHKU_ROLL:
+        p: 2000
+        i: 0
+        d: 50
+  mani_arm_controller:
+    type: "effort_controllers/JointTrajectoryController"
+    joints:
+      - UFRAME
+      - MNP_SWING
+      - MANIBOOM
+      - MANIARM
+      - MANIELBOW
+      - YAWJOINT
+      - HANDBASE
+    gains:
+      UFRAME:
+        p: 150000
+        i: 0
+        d: 10000
+      MNP_SWING:
+        p: 5000
+        i: 0
+        d: 90
+      MANIBOOM:
+        p: 100000
+        i: 0
+        d: 3000
+      MANIARM:
+        p: 20000
+        i: 0
+        d: 500
+      MANIELBOW:
+        p: 2650
+        i: 0
+        d: 40
+      YAWJOINT:
+        p: 2000
+        i: 0
+        d: 50
+      HANDBASE:
+        p: 50
+        i: 0
+        d: 2
+  tohoku_gripper_controller:
+    type: "effort_controllers/JointTrajectoryController"
+    joints:
+      - TOHKU_TIP_01
+      - TOHKU_TIP_02
+    gains:
+      TOHKU_TIP_01:
+        p: 500
+        i: 0
+        d: 50
+      TOHKU_TIP_02:
+        p: 500
+        i: 0
+        d: 50
+  mani_gripper_controller:
+    type: "effort_controllers/JointTrajectoryController"
+    joints:
+      - PUSHROD
+    gains:
+      PUSHROD:
+        p: 50000
+        i: 0
+        d: 5000
