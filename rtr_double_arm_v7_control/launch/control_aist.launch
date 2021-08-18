@@ -1,4 +1,9 @@
 <launch>
+  <arg name="model" default="$(find rtr_double_arm_v7_description)/urdf/RTRDoubleArmV7S.urdf.xacro"/>
+
+  <!-- description -->
+  <param name="RTRDoubleArmV7/robot_description" command="$(find xacro)/xacro --inorder '$(arg model)'"/>
+  
   <!-- state publisher -->
   <node ns="RTRDoubleArmV7" name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="true"/>
    
