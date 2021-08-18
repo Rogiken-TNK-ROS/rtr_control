@@ -4,7 +4,8 @@
    
   <!-- load the controllers -->
   <rosparam file="$(find rtr_double_arm_v7_control)/config/rtr_double_arm_v7_joint_state_control.yaml" command="load"/>
-  <rosparam file="$(find rtr_double_arm_v7_control)/config/rtr_double_arm_v7a_effort_control.yaml" command="load"/>
+  <!-- <rosparam file="$(find rtr_double_arm_v7_control)/config/rtr_double_arm_v7a_effort_control.yaml" command="load"/> -->
+  <rosparam file="$(find rtr_double_arm_v7_control)/config/rtr_double_arm_v7_arm_control.yaml" command="load"/>
   <rosparam file="$(find rtr_double_arm_v7_control)/config/rtr_double_arm_v7a_diff_drive_control.yaml" command="load"/>
   
   <node name="rtr_double_arm_v7_controller_spawner" pkg="controller_manager"
