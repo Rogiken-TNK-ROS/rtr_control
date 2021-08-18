@@ -14,12 +14,11 @@
   <rosparam file="$(find rtr_double_arm_v7_control)/config/rtr_double_arm_v7a_diff_drive_control.yaml" command="load"/>
   
   <node name="rtr_double_arm_v7_controller_spawner" pkg="controller_manager"
-		type="spawner" output="screen" respawn="true"
-		args="--namespace RTRDoubleArmV7
+    	type="spawner" output="screen" respawn="true"
+    	args="--namespace RTRDoubleArmV7
               tohoku_arm_controller
               mani_arm_controller
               tohoku_gripper_controller
               mani_gripper_controller
-              joint_state_controller
-              base_controller"/>  
+              base_controller"/>
 </launch>
